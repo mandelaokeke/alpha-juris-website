@@ -35,7 +35,7 @@ function HeroLanding() {
       {/* HERO (full-bleed background, aligned content) */}
       <section
         ref={heroRef}
-        className="relative mb-0 w-full min-h-[90vh] overflow-hidden bg-linear-to-br from-slate-950 via-blue-950 to-slate-900"
+        className="relative mb-0 w-full min-h-[90svh] overflow-hidden bg-linear-to-br from-slate-950 via-blue-950 to-slate-900"
       >
         {/* Background image (parallax) */}
         <motion.div
@@ -58,20 +58,20 @@ function HeroLanding() {
         />
 
         {/* Aligned content container */}
-        <div className="relative z-10 site-container grid gap-6 pt-16 pb-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-start md:pt-20 md:pb-14">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 grid gap-6 pt-14 pb-10 sm:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] sm:items-start md:pt-20 md:pb-14">
           {/* Left card */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl space-y-7 rounded-3xl bg-white/80 p-8 backdrop-blur-md ml-4 sm:ml-6 md:ml-10"
+            className="max-w-3xl space-y-6 rounded-3xl bg-white/80 p-6 sm:p-8 backdrop-blur-md"
           >
             <p className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-900/20 bg-white px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-slate-700">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#C9A24D]" />
               Alpha Juris Chambers • Precision. Advocacy. Results.
             </p>
 
-            <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl leading-tight">
+            <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl leading-tight">
               Commercial‑minded advocacy
               <span className="block">for high‑stakes matters</span>
             </h1>
@@ -84,7 +84,7 @@ function HeroLanding() {
               style={{ originX: 0 }}
             />
 
-            <p className="max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
+            <p className="max-w-xl text-sm leading-relaxed text-slate-700 sm:text-base lg:text-lg">
               Alpha‑Juris Chambers advises businesses and professionals on corporate
               transactions and complex litigation across Nigeria, combining sharp legal
               analysis with practical, business‑focused judgment.
@@ -111,12 +111,12 @@ function HeroLanding() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.7 }}
-            className="flex w-full justify-start"
+            className="flex w-full justify-center sm:justify-start"
           >
             <div className="w-full max-w-2xl space-y-6">
               <div className="relative w-full overflow-hidden rounded-3xl bg-white/95 shadow-xl shadow-slate-950/35 backdrop-blur-md">
                 {/* Media */}
-                <div className="relative h-56 w-full">
+              <div className="relative h-44 sm:h-56 w-full">
                   <Image
                     src="/law-library.jpg"
                     alt="Law library shelves and legal references"
@@ -146,7 +146,7 @@ function HeroLanding() {
                     </p>
                   </div>
 
-                  <div className="mt-5 grid gap-3 md:grid-cols-2">
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
                     <div className="group rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-sm shadow-slate-950/5 backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-slate-300/70 hover:bg-white/85">
                       <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-600">
                         Offices
@@ -172,7 +172,7 @@ function HeroLanding() {
                 <Link
                   href="/practice-areas"
                   aria-label="Explore practice areas"
-                  className="group relative block h-24 overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md hover:shadow-slate-950/10"
+                  className="group relative block h-20 sm:h-24 overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md hover:shadow-slate-950/10"
                 >
                   <Image
                     src="/courtroom.jpg"
@@ -186,7 +186,7 @@ function HeroLanding() {
                 <Link
                   href="/attorneys"
                   aria-label="Meet our attorneys"
-                  className="group relative block h-24 overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md hover:shadow-slate-950/10"
+                  className="group relative block h-20 sm:h-24 overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md hover:shadow-slate-950/10"
                 >
                   <Image
                     src="/gavel.jpg"
@@ -200,7 +200,7 @@ function HeroLanding() {
                 <Link
                   href="/why-us"
                   aria-label="View notable results"
-                  className="group relative block h-24 overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md hover:shadow-slate-950/10"
+                  className="group relative block h-20 sm:h-24 overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md hover:shadow-slate-950/10"
                 >
                   <Image
                     src="/contract-signing.jpg"
@@ -264,10 +264,10 @@ function HeroLanding() {
         {/* Overlays removed to keep the background image vivid */}
 
         {/* Centered content */}
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
-          <div className="grid items-start gap-12 lg:grid-cols-2">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-start gap-10 sm:grid-cols-2">
             {/* Left: Contact info (card) */}
-            <div className="rounded-2xl bg-white/88 p-8 shadow-lg shadow-slate-900/15 backdrop-blur-sm">
+            <div className="rounded-2xl bg-white/88 p-6 sm:p-8 shadow-lg shadow-slate-900/15 backdrop-blur-sm">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-900">
                 Contact
               </p>
@@ -292,7 +292,7 @@ function HeroLanding() {
                   </p>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
                   <div className="rounded-xl bg-slate-50 p-5">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
                       Port Harcourt Office
@@ -309,7 +309,7 @@ function HeroLanding() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-slate-50 p-5">
+                <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-4 rounded-xl bg-slate-50 p-5">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
                       Phone (Abuja)
@@ -331,7 +331,7 @@ function HeroLanding() {
             {/* Right: Contact form (centered + improved inputs) */}
             <div className="flex w-full justify-center lg:justify-end">
               <form
-                className="w-full max-w-lg rounded-2xl bg-white/88 p-8 shadow-lg shadow-slate-900/20 backdrop-blur-sm"
+                className="w-full max-w-lg rounded-2xl bg-white/88 p-6 sm:p-8 shadow-lg shadow-slate-900/20 backdrop-blur-sm"
                 action="mailto:Jeydem03@gmail.com"
                 method="post"
                 encType="text/plain"
@@ -341,7 +341,7 @@ function HeroLanding() {
                   <p className="text-xs text-slate-500">Typically responds within 1–2 business days</p>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-xs font-medium text-slate-700">Full name</label>
                     <input
@@ -365,7 +365,7 @@ function HeroLanding() {
                   </div>
                 </div>
 
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div className="mt-4 grid gap-3 sm:gap-4 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-xs font-medium text-slate-700">Phone</label>
                     <input

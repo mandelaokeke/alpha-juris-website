@@ -1,7 +1,14 @@
 // app/layout.tsx
 import Header from "./head-foot/Header";
 import Footer from "./head-foot/Footer";
+import type { Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 function Watermark() {
   return (
@@ -18,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="relative min-h-screen bg-transparent text-slate-900">
+    <html lang="en" className="h-full scroll-smooth">
+      <body className="relative min-h-screen bg-transparent text-slate-900 antialiased overflow-x-hidden">
         {/* Global background watermark */}
         {/* <Watermark /> */}
 
@@ -27,7 +34,7 @@ export default function RootLayout({
         <div className="relative z-10 flex min-h-screen flex-col">
           <Header />
 
-          <main className="w-full flex-1 pt-0 pb-0">{children}</main>
+          <main className="w-full flex-1 px-4 sm:px-6 lg:px-8 pt-0 pb-0">{children}</main>
 
           <Footer />
         </div>

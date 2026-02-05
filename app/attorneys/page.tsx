@@ -106,7 +106,7 @@ export default function AttorneysPage() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pt-4 sm:px-6 lg:px-10 2xl:max-w-360">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-14 pt-4 sm:px-6 lg:px-8">
         <motion.section
           className="mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -125,8 +125,8 @@ export default function AttorneysPage() {
           </div>
 
           {/* Meet the Partner (Featured) */}
-          <div className="rounded-3xl border border-slate-200 bg-white/85 p-8 shadow-lg shadow-slate-950/10 backdrop-blur-sm">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start">
+          <div className="rounded-3xl border border-slate-200 bg-white/85 p-6 sm:p-8 shadow-lg shadow-slate-950/10 backdrop-blur-sm">
+            <div className="grid gap-8 sm:gap-10 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:items-start">
               {/* Left copy */}
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-600">
@@ -143,7 +143,7 @@ export default function AttorneysPage() {
                   {featuredPartner.summary}
                 </p>
 
-                <div className="mt-6 grid gap-3 md:grid-cols-2">
+                <div className="mt-6 grid gap-3 min-[400px]:grid-cols-2">
                   <ul className="space-y-2 text-sm text-slate-800">
                     {featuredPartner.bulletsLeft.map((t) => (
                       <li key={t} className="flex gap-3">
@@ -162,7 +162,7 @@ export default function AttorneysPage() {
                   </ul>
                 </div>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="mt-7 flex flex-wrap items-center gap-3">
                   <button
                     type="button"
                     onClick={() => setIsJerryProfileOpen(true)}
@@ -183,7 +183,7 @@ export default function AttorneysPage() {
               </div>
 
               {/* Right side card */}
-              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/10">
+              <div className="hidden md:block rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/10">
                 <div className="flex items-start gap-5">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-950 text-xl font-semibold text-white shadow-md">
                     JE
@@ -232,7 +232,7 @@ export default function AttorneysPage() {
               </div>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-3">
+            <div className="grid gap-5 min-[400px]:grid-cols-2 lg:grid-cols-3">
               {attorneys.map((attorney, index) => (
                 <motion.div
                   key={attorney.name}
@@ -262,7 +262,7 @@ export default function AttorneysPage() {
             </div>
           </div>
       {isJerryProfileOpen ? (
-        <div className="fixed inset-0 z-55 flex items-start justify-center p-4 pt-24">
+        <div className="fixed inset-0 z-[55] flex items-start justify-center p-4 pt-16 sm:pt-24">
           {/* Backdrop */}
           <button
             type="button"
@@ -272,9 +272,9 @@ export default function AttorneysPage() {
           />
 
           {/* Modal */}
-          <div className="relative z-10 w-full max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl h-[calc(100vh-7rem)]">
+          <div className="relative z-10 w-full max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl max-h-[calc(100svh-6rem)] sm:max-h-[calc(100vh-7rem)]">
             {/* Top bar */}
-            <div className="flex items-start justify-between gap-4 border-b border-slate-200 p-6">
+            <div className="flex items-start justify-between gap-4 border-b border-slate-200 p-4 sm:p-6">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-600">
                   Attorney Profile
@@ -297,9 +297,9 @@ export default function AttorneysPage() {
             </div>
 
             {/* Body */}
-            <div className="grid gap-0 md:grid-cols-[320px_1fr] h-[calc(100vh-7rem-88px)]">
+            <div className="grid gap-0 md:grid-cols-[320px_1fr]">
               {/* Left profile card */}
-              <aside className="border-b border-slate-200 bg-slate-50 p-6 pb-10 md:border-b-0 md:border-r h-full overflow-y-auto overscroll-contain">
+              <aside className="border-b border-slate-200 bg-slate-50 p-4 sm:p-6 pb-8 md:border-b-0 md:border-r overflow-y-auto overscroll-contain">
                 <div className="flex items-center gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-900 text-lg font-semibold text-white shadow-md">
                     JE
@@ -363,7 +363,7 @@ export default function AttorneysPage() {
               </aside>
 
               {/* Right profile content */}
-              <section className="p-6 pb-10 h-full overflow-y-auto overscroll-contain">
+              <section className="p-4 sm:p-6 pb-8 overflow-y-auto overscroll-contain">
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-sm font-semibold text-slate-900">
@@ -501,7 +501,7 @@ export default function AttorneysPage() {
       </div>
 
       {isJerryContactOpen ? (
-        <div className="fixed inset-0 z-60 flex items-start justify-center p-4 pt-24">
+        <div className="fixed inset-0 z-[60] flex items-start justify-center p-4 pt-16 sm:pt-24">
           {/* Backdrop */}
           <button
             type="button"
@@ -511,7 +511,7 @@ export default function AttorneysPage() {
           />
 
           {/* Modal */}
-          <div className="relative z-10 w-full max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl max-h-[calc(100vh-7rem)] overflow-y-auto">
+          <div className="relative z-10 w-full max-w-2xl rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 shadow-2xl max-h-[calc(100svh-6rem)] sm:max-h-[calc(100vh-7rem)] overflow-y-auto">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-600">

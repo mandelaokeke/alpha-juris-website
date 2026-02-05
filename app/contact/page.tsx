@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function ContactPage() {
   return (
     <main
-      className="relative min-h-screen text-slate-900 flex items-center bg-no-repeat bg-center bg-cover"
+      className="relative min-h-screen text-slate-900 flex items-start md:items-center bg-no-repeat bg-center bg-cover"
       style={{ backgroundImage: "url('/contactUS.jpg')" }}
     >
       {/* Readability overlay */}
@@ -15,9 +15,9 @@ export default function ContactPage() {
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/55 via-black/35 to-black/20"
       />
-      <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:py-16 sm:px-6 lg:px-8">
         <motion.section
-          className="mb-20"
+          className="mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
@@ -27,16 +27,16 @@ export default function ContactPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
                 Contact
               </p>
-              <h1 className="mt-4 text-4xl font-semibold text-white sm:text-5xl [text-shadow:0_10px_30px_rgba(0,0,0,0.55)]">
+              <h1 className="mt-4 text-[2rem] leading-tight font-semibold text-white sm:text-4xl lg:text-5xl [text-shadow:0_10px_30px_rgba(0,0,0,0.55)]">
                 Let&apos;s talk about your matter.
               </h1>
-              <p className="mt-5 text-xl text-white/95 leading-relaxed [text-shadow:0_6px_20px_rgba(0,0,0,0.45)]">
+              <p className="mt-4 text-base sm:text-lg lg:text-xl text-white/95 leading-relaxed [text-shadow:0_6px_20px_rgba(0,0,0,0.45)]">
                 Share a brief overview of your situation and our team will
                 respond with next steps. We do not share your information with
                 third parties.
               </p>
 
-              <div className="mt-8 space-y-4 text-lg text-white/90 [text-shadow:0_6px_18px_rgba(0,0,0,0.45)]">
+              <div className="mt-7 space-y-4 text-base sm:text-lg text-white/90 [text-shadow:0_6px_18px_rgba(0,0,0,0.45)]">
                 <p>
                   <span className="font-semibold">Abuja Office (Chambers):</span>{" "}
                   Suite 6 Block B (2nd Floor, Left Wing), Alpha Cell Plaza, 12
@@ -75,7 +75,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <form className="space-y-7 rounded-3xl border border-slate-200 bg-white p-10 text-lg shadow-lg">
+            <form className="space-y-6 w-full max-w-xl md:max-w-none mx-auto rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 text-base sm:text-lg shadow-lg">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label
@@ -159,7 +159,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="w-full rounded-full bg-blue-900 px-6 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-900/30 transition hover:-translate-y-0.5 hover:bg-blue-800"
+                className="w-full rounded-full bg-blue-900 px-6 py-3.5 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-blue-900/30 transition hover:-translate-y-0.5 hover:bg-blue-800"
               >
                 Submit inquiry
               </button>

@@ -1,7 +1,7 @@
 // app/Header.tsx (or wherever your Header lives)
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -46,6 +46,30 @@ export default function Header({
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const menuBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll when overlays are open
+  useEffect(() => {
+    const shouldLock = isOpen || isEnquiryOpen;
+    if (!shouldLock) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isOpen, isEnquiryOpen]);
+
+  // Restore focus to menu button when closing menu (accessibility)
+  useEffect(() => {
+    if (!isOpen) menuBtnRef.current?.focus();
+  }, [isOpen]);
+
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 8);
     onScroll();
@@ -72,14 +96,14 @@ export default function Header({
           : "border-b border-transparent")
       }
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-10">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:gap-6 sm:py-4 sm:px-6 lg:px-8">
         {/* Brand */}
         <Link
           href="/"
           className="group flex items-center gap-3 text-left"
           aria-label="Go to homepage"
         >
-          <span className="relative h-14 w-14 overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_10px_25px_rgba(2,6,23,0.08)] ring-1 ring-slate-900/5">
+          <span className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_10px_25px_rgba(2,6,23,0.08)] ring-1 ring-slate-900/5">
             <Image
               src={logoSrc}
               alt="Alpha-Juris logo"
@@ -91,10 +115,10 @@ export default function Header({
           </span>
 
           <span className="leading-tight">
-            <span className="block text-[0.86rem] font-semibold tracking-[0.18em] text-slate-950">
+            <span className="block text-[0.78rem] sm:text-[0.86rem] font-semibold tracking-[0.16em] sm:tracking-[0.18em] text-slate-950">
               {firmName}
             </span>
-            <span className="block text-[0.78rem] text-slate-600/90">{tagline}</span>
+            <span className="hidden sm:block text-[0.78rem] text-slate-600/90">{tagline}</span>
           </span>
         </Link>
 
@@ -142,9 +166,11 @@ export default function Header({
         {/* Mobile button */}
         <div className="md:hidden">
           <button
+            ref={menuBtnRef}
             type="button"
             onClick={() => setIsOpen((v) => !v)}
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200/80 bg-white/90 px-3 py-2 text-sm font-semibold text-slate-900 shadow-[0_10px_25px_rgba(2,6,23,0.08)] ring-1 ring-slate-900/5"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-200/80 bg-white/90 px-3.5 py-2.5 text-sm font-semibold text-slate-900 shadow-[0_10px_25px_rgba(2,6,23,0.08)] ring-1 ring-slate-900/5"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
           >
@@ -164,14 +190,22 @@ export default function Header({
       {/* Mobile menu */}
       {isOpen ? (
         <div id="mobile-menu" className="border-t border-slate-200 bg-white md:hidden">
-          <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-10">
+          <div className="mx-auto w-full max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
             <div className="grid gap-2">
               {navLinks.map((l) => (
                 <Link
                   key={`${l.href}-${l.label}-m`}
                   href={l.href}
-                  onClick={() => setIsOpen(false)}
-                  className="w-full rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-900"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsEnquiryOpen(false);
+                  }}
+                  className={
+                    "w-full rounded-xl px-3 py-2.5 text-left text-sm font-medium transition " +
+                    (pathname === l.href
+                      ? "bg-slate-50 text-blue-900"
+                      : "text-slate-700 hover:bg-slate-50 hover:text-blue-900")
+                  }
                 >
                   {l.label}
                 </Link>
@@ -208,9 +242,9 @@ export default function Header({
           />
 
           {/* Panel */}
-          <div className="relative mx-auto flex min-h-screen items-center justify-center px-4 sm:px-6">
+          <div className="relative mx-auto flex min-h-svh items-center justify-center px-4 sm:px-6">
             <div className="w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-[0_22px_70px_rgba(15,23,42,0.35)] ring-1 ring-slate-200">
-              <div className="flex items-start justify-between gap-4 border-b border-slate-200 px-6 py-5">
+              <div className="flex items-start justify-between gap-4 border-b border-slate-200 px-4 sm:px-6 py-5">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-600">
                     Enquiry
@@ -228,7 +262,7 @@ export default function Header({
                 </button>
               </div>
 
-              <div className="px-6 py-5">
+              <div className="px-4 sm:px-6 py-5">
                 {!submitted ? (
                   <form
                     onSubmit={(e) => {
