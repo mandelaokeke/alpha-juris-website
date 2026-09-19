@@ -8,7 +8,10 @@ const eslintConfig = defineConfig([
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
+    "node_modules.cloud-backup/**",
     ".next/**",
+    ".next-preview/**",
+    ".next-production/**",
     "out/**",
     "build/**",
     "next-env.d.ts",

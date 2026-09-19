@@ -1,23 +1,16 @@
 // app/layout.tsx
 import Header from "./head-foot/Header";
 import Footer from "./head-foot/Footer";
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const metadata: Metadata = { title: { default: "Alpha-Juris Chambers | Advocates & Investment Solicitors", template: "%s | Alpha-Juris Chambers" }, description: "Commercial-minded legal counsel, corporate advisory and dispute resolution across Nigeria. Established in 1992." };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
 };
-
-function Watermark() {
-  return (
-    <div
-      className="pointer-events-none fixed inset-0 -z-10 bg-[url('/alpha-juris-logo.png')] bg-no-repeat bg-center"
-      aria-hidden
-    />
-  );
-}
 
 export default function RootLayout({
   children,
@@ -27,14 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full scroll-smooth">
       <body className="relative min-h-screen bg-transparent text-slate-900 antialiased overflow-x-hidden">
-        {/* Global background watermark */}
-        {/* <Watermark /> */}
-
-        {/* App chrome */}
         <div className="relative z-10 flex min-h-screen flex-col">
+          <a className="skip-link" href="#main-content">Skip to content</a>
           <Header />
 
-          <main className="w-full flex-1 px-4 sm:px-6 lg:px-8 pt-0 pb-0">{children}</main>
+          <main id="main-content" tabIndex={-1} className="w-full flex-1">{children}</main>
 
           <Footer />
         </div>
